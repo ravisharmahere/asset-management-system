@@ -74,3 +74,15 @@ jobs:
 
             # Run the new container with a specific name and ensure proper port mapping
             docker run --name ${{ env.APP_NAME }} --env-file /home/ec2-user/.env -d -p 80:3000 ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.APP_NAME }}:latest
+
+            # Check container status
+            echo "Checking container status..."
+            docker ps -a | grep ${{ env.APP_NAME }}
+
+            # If container exists but not running, check logs
+            if docker ps -a | grep -q ${{ env.APP_NAME }}; then
+              echo "Container exists. Checking logs..."
+              docker logs ${{ env.APP_NAME }}
+            else
+              echo "Container does not exist"
+            fi
