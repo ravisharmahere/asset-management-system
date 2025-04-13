@@ -27,3 +27,5 @@ Thumbs.db
 # Other
 src/test
 files
+# Local Netlify folder
+.netlify
