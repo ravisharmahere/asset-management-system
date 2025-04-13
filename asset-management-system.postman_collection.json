@@ -1,0 +1,1169 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6",
+    "name": "Asset Management System",
+    "description": "API collection for the Asset Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Assets",
+      "description": "Asset management endpoints",
+      "item": [
+        {
+          "name": "Get All Assets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets?page=1&limit=10&sort=created_at&order=DESC&status=&condition=&categoryId=&roomId=&search=&purchaseStartDate=&purchaseEndDate=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "sort",
+                  "value": "created_at"
+                },
+                {
+                  "key": "order",
+                  "value": "DESC"
+                },
+                {
+                  "key": "status",
+                  "value": ""
+                },
+                {
+                  "key": "condition",
+                  "value": ""
+                },
+                {
+                  "key": "categoryId",
+                  "value": ""
+                },
+                {
+                  "key": "roomId",
+                  "value": ""
+                },
+                {
+                  "key": "search",
+                  "value": ""
+                },
+                {
+                  "key": "purchaseStartDate",
+                  "value": ""
+                },
+                {
+                  "key": "purchaseEndDate",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Get all assets with filtering and pagination"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Asset by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Asset ID"
+                }
+              ]
+            },
+            "description": "Get asset by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Asset",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Dell Latitude Laptop\",\n  \"description\": \"Dell Latitude 5520 Business Laptop\",\n  \"categoryId\": \"category-id\",\n  \"status\": \"ACTIVE\",\n  \"condition\": \"GOOD\",\n  \"purchaseDate\": \"2023-01-15\",\n  \"purchasePrice\": 1299.99,\n  \"vendorId\": \"vendor-id\",\n  \"locationId\": \"location-id\",\n  \"roomId\": \"room-id\",\n  \"serialNumber\": \"DL5520-ABC123\",\n  \"modelNumber\": \"Latitude 5520\",\n  \"warrantyExpiryDate\": \"2025-01-15\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets"]
+            },
+            "description": "Create a new asset"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Asset",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Dell Latitude Laptop\",\n  \"description\": \"Dell Latitude 5520 Business Laptop (Updated)\",\n  \"categoryId\": \"category-id\",\n  \"status\": \"ACTIVE\",\n  \"condition\": \"GOOD\",\n  \"purchaseDate\": \"2023-01-15\",\n  \"purchasePrice\": 1299.99,\n  \"vendorId\": \"vendor-id\",\n  \"locationId\": \"location-id\",\n  \"roomId\": \"room-id\",\n  \"serialNumber\": \"DL5520-ABC123\",\n  \"modelNumber\": \"Latitude 5520\",\n  \"warrantyExpiryDate\": \"2025-01-15\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Asset ID"
+                }
+              ]
+            },
+            "description": "Update an existing asset"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Asset",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Asset ID"
+                }
+              ]
+            },
+            "description": "Delete an asset"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Asset Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"MAINTENANCE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/:id/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", ":id", "status"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Asset ID"
+                }
+              ]
+            },
+            "description": "Update asset status"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Asset Condition",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"condition\": \"FAIR\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/:id/condition",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", ":id", "condition"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Asset ID"
+                }
+              ]
+            },
+            "description": "Update asset condition"
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Asset Image",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/:id/images",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", ":id", "images"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Asset ID"
+                }
+              ]
+            },
+            "description": "Upload an image for an asset"
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Asset File",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                },
+                {
+                  "key": "category",
+                  "value": "documentation",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/:id/files",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", ":id", "files"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Asset ID"
+                }
+              ]
+            },
+            "description": "Upload a file for an asset"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Asset History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/:id/history",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", ":id", "history"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Asset ID"
+                }
+              ]
+            },
+            "description": "Get asset history"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "description": "Category management endpoints",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/categories?page=1&limit=10&sort=name&order=ASC",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", "categories"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "sort",
+                  "value": "name"
+                },
+                {
+                  "key": "order",
+                  "value": "ASC"
+                }
+              ]
+            },
+            "description": "Get all categories with pagination"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Category by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/categories/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", "categories", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Category ID"
+                }
+              ]
+            },
+            "description": "Get category by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Computer Equipment\",\n  \"description\": \"Desktop computers, laptops, and accessories\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", "categories"]
+            },
+            "description": "Create a new category"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Computer Equipment\",\n  \"description\": \"Updated description for computer equipment\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/categories/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", "categories", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Category ID"
+                }
+              ]
+            },
+            "description": "Update an existing category"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/categories/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", "categories", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Category ID"
+                }
+              ]
+            },
+            "description": "Delete a category"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Vendors",
+      "description": "Vendor management endpoints",
+      "item": [
+        {
+          "name": "Get All Vendors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/vendors?page=1&limit=10&sort=name&order=ASC",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", "vendors"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "sort",
+                  "value": "name"
+                },
+                {
+                  "key": "order",
+                  "value": "ASC"
+                }
+              ]
+            },
+            "description": "Get all vendors with pagination"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Vendor by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/vendors/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", "vendors", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Vendor ID"
+                }
+              ]
+            },
+            "description": "Get vendor by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Vendor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Dell\",\n  \"contactPerson\": \"Sarah Johnson\",\n  \"email\": \"sarah.johnson@dell.com\",\n  \"phone\": \"+1-555-0124\",\n  \"address\": \"456 Tech Avenue, Silicon Valley, 54321\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/vendors",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", "vendors"]
+            },
+            "description": "Create a new vendor"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Vendor",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Dell\",\n  \"contactPerson\": \"Sarah Johnson\",\n  \"email\": \"sarah.johnson@dell.com\",\n  \"phone\": \"+1-555-0124\",\n  \"address\": \"456 Tech Avenue, Silicon Valley, 54321 (Updated)\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/vendors/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", "vendors", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Vendor ID"
+                }
+              ]
+            },
+            "description": "Update an existing vendor"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Vendor",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/assets/vendors/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "assets", "vendors", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Vendor ID"
+                }
+              ]
+            },
+            "description": "Delete a vendor"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Locations",
+      "description": "Location management endpoints",
+      "item": [
+        {
+          "name": "Buildings",
+          "item": [
+            {
+              "name": "Get All Buildings",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/buildings?page=1&limit=10&sort=name&order=ASC",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "buildings"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    },
+                    {
+                      "key": "order",
+                      "value": "ASC"
+                    }
+                  ]
+                },
+                "description": "Get all buildings with pagination"
+              }
+            },
+            {
+              "name": "Get Building by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/buildings/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "buildings", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": "Building ID"
+                    }
+                  ]
+                },
+                "description": "Get building by ID"
+              }
+            },
+            {
+              "name": "Get Building Details",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/buildings/:id/details",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "buildings", ":id", "details"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": "Building ID"
+                    }
+                  ]
+                },
+                "description": "Get building with details"
+              }
+            },
+            {
+              "name": "Create Building",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Main Building\",\n  \"address\": \"123 Main Street, City Center, 10001\",\n  \"description\": \"Main office building\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/buildings",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "buildings"]
+                },
+                "description": "Create a new building"
+              }
+            },
+            {
+              "name": "Update Building",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Main Building\",\n  \"address\": \"123 Main Street, City Center, 10001 (Updated)\",\n  \"description\": \"Updated description for main office building\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/buildings/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "buildings", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": "Building ID"
+                    }
+                  ]
+                },
+                "description": "Update an existing building"
+              }
+            },
+            {
+              "name": "Delete Building",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/buildings/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "buildings", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": "Building ID"
+                    }
+                  ]
+                },
+                "description": "Delete a building"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Floors",
+          "item": [
+            {
+              "name": "Get All Floors",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/floors?page=1&limit=10&sort=name&order=ASC",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "floors"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    },
+                    {
+                      "key": "order",
+                      "value": "ASC"
+                    }
+                  ]
+                },
+                "description": "Get all floors with pagination"
+              }
+            },
+            {
+              "name": "Get Floors by Building",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/buildings/:buildingId/floors?page=1&limit=10&sort=name&order=ASC",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "buildings", ":buildingId", "floors"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    },
+                    {
+                      "key": "order",
+                      "value": "ASC"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "buildingId",
+                      "value": "",
+                      "description": "Building ID"
+                    }
+                  ]
+                },
+                "description": "Get floors by building ID"
+              }
+            },
+            {
+              "name": "Get Floor by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/floors/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "floors", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": "Floor ID"
+                    }
+                  ]
+                },
+                "description": "Get floor by ID"
+              }
+            },
+            {
+              "name": "Get Floor Details",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/floors/:id/details",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "floors", ":id", "details"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": "Floor ID"
+                    }
+                  ]
+                },
+                "description": "Get floor with details"
+              }
+            },
+            {
+              "name": "Create Floor",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"First Floor\",\n  \"buildingId\": \"building-id\",\n  \"description\": \"First floor of the building\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/floors",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "floors"]
+                },
+                "description": "Create a new floor"
+              }
+            },
+            {
+              "name": "Update Floor",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"First Floor\",\n  \"buildingId\": \"building-id\",\n  \"description\": \"Updated description for first floor\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/floors/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "floors", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": "Floor ID"
+                    }
+                  ]
+                },
+                "description": "Update an existing floor"
+              }
+            },
+            {
+              "name": "Delete Floor",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/floors/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "floors", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": "Floor ID"
+                    }
+                  ]
+                },
+                "description": "Delete a floor"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Rooms",
+          "item": [
+            {
+              "name": "Get All Rooms",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/rooms?page=1&limit=10&sort=name&order=ASC",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "rooms"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    },
+                    {
+                      "key": "order",
+                      "value": "ASC"
+                    }
+                  ]
+                },
+                "description": "Get all rooms with pagination"
+              }
+            },
+            {
+              "name": "Get Rooms by Floor",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/floors/:floorId/rooms?page=1&limit=10&sort=name&order=ASC",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "floors", ":floorId", "rooms"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    },
+                    {
+                      "key": "order",
+                      "value": "ASC"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "floorId",
+                      "value": "",
+                      "description": "Floor ID"
+                    }
+                  ]
+                },
+                "description": "Get rooms by floor ID"
+              }
+            },
+            {
+              "name": "Get Room by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/rooms/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "rooms", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": "Room ID"
+                    }
+                  ]
+                },
+                "description": "Get room by ID"
+              }
+            },
+            {
+              "name": "Get Room Details",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/rooms/:id/details",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "rooms", ":id", "details"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": "Room ID"
+                    }
+                  ]
+                },
+                "description": "Get room with full details"
+              }
+            },
+            {
+              "name": "Create Room",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Conference Room 1\",\n  \"floorId\": \"floor-id\",\n  \"capacity\": 20,\n  \"description\": \"Main conference room\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/rooms",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "rooms"]
+                },
+                "description": "Create a new room"
+              }
+            },
+            {
+              "name": "Update Room",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Conference Room 1\",\n  \"floorId\": \"floor-id\",\n  \"capacity\": 25,\n  \"description\": \"Updated description for main conference room\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/rooms/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "rooms", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": "Room ID"
+                    }
+                  ]
+                },
+                "description": "Update an existing room"
+              }
+            },
+            {
+              "name": "Delete Room",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/rooms/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "rooms", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": "Room ID"
+                    }
+                  ]
+                },
+                "description": "Delete a room"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Hierarchy",
+          "item": [
+            {
+              "name": "Get Location Hierarchy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/hierarchy",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "hierarchy"]
+                },
+                "description": "Get complete location hierarchy"
+              }
+            },
+            {
+              "name": "Get Location by Room ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/locations/rooms/:roomId/location",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "locations", "rooms", ":roomId", "location"],
+                  "variable": [
+                    {
+                      "key": "roomId",
+                      "value": "",
+                      "description": "Room ID"
+                    }
+                  ]
+                },
+                "description": "Get location details by room ID"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
