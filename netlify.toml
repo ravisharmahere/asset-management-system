@@ -1,4 +1,0 @@
-[build]
-  command = "npm run start:prod"
-  functions = "netlify/functions"
-  publish = "public"
