@@ -52,10 +52,25 @@ jobs:
           username: ec2-user # Adjust if using a different default user
           key: ${{ secrets.EC2_SSH_KEY }} # Your private key (stored as a GitHub secret)
           script: |
+            # Check disk space
+            df -h
+
+            # Clean up Docker resources
+            docker system prune -f
+            docker volume prune -f
+
+            # Remove old images
+            docker images -q | xargs -r docker rmi -f
+
+            # Check disk space after cleanup
+            df -h
+
             # Pull the latest Docker image from Docker Hub
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.APP_NAME }}:latest
+
             # Stop and remove any running container named '${{ env.APP_NAME }}' if exists
             docker stop ${{ env.APP_NAME }} || true
             docker rm ${{ env.APP_NAME }} || true
+
             # Run the new container with a specific name and ensure proper port mapping
             docker run --name ${{ env.APP_NAME }} --env-file /home/ec2-user/.env -d -p 80:3000 ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.APP_NAME }}:latest
