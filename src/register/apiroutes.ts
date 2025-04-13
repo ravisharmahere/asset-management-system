@@ -4,8 +4,12 @@ import { NotFoundResponse } from '../core';
 import { AssetRoutes, LocationRoutes } from '../routes';
 
 export const RegisterApiRoutes = (router: Router, prefix: string): void => {
+  router.get('/', (req: Request, res: Response) => {
+    res.send(`WELCOME TO ASSET MANAGEMENT SYSTEM ${nodeEnv.toUpperCase()} ❤`);
+  });
+
   router.get(prefix, (req: Request, res: Response) => {
-    res.send(`WELCOME TO ASSET MANAGEMENT SYSTEM ${nodeEnv.toUpperCase()}❤`);
+    res.send(`WELCOME TO ASSET MANAGEMENT SYSTEM ${nodeEnv.toUpperCase()} API ❤`);
   });
 
   router.use(`${prefix}/assets`, new AssetRoutes().router);

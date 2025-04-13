@@ -1162,7 +1162,7 @@
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://localhost:3000",
+      "value": "https://asset-management-system-1bey.onrender.com",
       "type": "string"
     }
   ]
